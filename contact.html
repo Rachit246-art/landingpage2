@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | RV GLOBAL - Luxury Charter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .inner-hero {
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.9)), url('assets/interior.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .inner-hero h1 { font-size: 4rem; color: #fff; margin-bottom: 1rem; }
+        .breadcrumb { color: #d35400; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
+        .breadcrumb a { color: #cbd5e1; text-decoration: none; }
+        .breadcrumb a:hover { color: #fff; }
+        
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            background: #fff;
+            padding: 4rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .contact-info { background: var(--bg-navy); color: #fff; padding: 3rem; border-radius: 12px; }
+        .contact-info h3 { color: #fff; font-size: 2rem; margin-bottom: 2rem; }
+        .info-item { display: flex; gap: 1.5rem; margin-bottom: 2rem; align-items: center; }
+        .info-item i { font-size: 1.5rem; color: var(--primary); }
+        .info-item p { margin: 0; color: #cbd5e1; font-size: 1.1rem; }
+        
+        @media(max-width: 992px) {
+            .contact-wrapper { grid-template-columns: 1fr; padding: 2rem; }
+        }
+    </style>
+</head>
+<body class="bg-main">
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">RV GLOBAL<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="about.html">ABOUT US</a>
+                <div class="dropdown">
+                    <a href="services.html">OUR SERVICES <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="services.html#charter">Charter Flights</a>
+                        <a href="services.html#chardham">Char Dham Yatra</a>
+                        <a href="services.html#vip">VIP Darshan</a>
+                    </div>
+                </div>
+                <a href="contact.html" style="color: var(--primary);">CONTACT US</a>
+            </div>
+            <button class="btn-primary open-popup" data-popup="inquiryPopup">Book Charter</button>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Inner Hero -->
+    <section class="inner-hero">
+        <div class="hero-content fade-up">
+            <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Contact Us</div>
+            <h1>Get in Touch</h1>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="contact-wrapper fade-up delay-1">
+                <div class="contact-form-area">
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-heading);">Send a Message</h3>
+                    <p style="margin-bottom: 2rem;">Fill out the form below and our aviation concierge will get back to you within 2 hours.</p>
+                    
+                    <form id="inquiryForm">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="Your Phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="How can we help you?" style="width: 100%; padding: 1rem; background: var(--bg-main); border: 1px solid #e2e8f0; border-radius: 8px; font-family: var(--font-body); resize: vertical; min-height: 120px;" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Headquarters</strong>
+                            <p>Level 4, Premium Tower, New Delhi, India 110001</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p>+91 800-123-4567<br>+91 987-654-3210 (24/7 Concierge)</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>charters@rvglobal.com<br>vip@rvglobal.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">RV GLOBAL<span>.</span></a>
+                    <p>Elevating the standard of spiritual journeys through unparalleled aviation luxury and dedicated service.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">HOME</a>
+                    <a href="about.html">ABOUT US</a>
+                    <a href="services.html">OUR SERVICES</a>
+                    <a href="contact.html">CONTACT US</a>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> +91 800-123-4567</p>
+                    <p><i class="fas fa-envelope"></i> charters@rvglobal.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RV GLOBAL. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 1. Inquiry Popup -->
+    <div class="popup-overlay" id="inquiryPopup">
+        <div class="popup-content">
+            <button class="close-popup"><i class="fas fa-times"></i></button>
+            <h3 class="popup-title">Book Your Charter</h3>
+            <p class="popup-subtitle">Fill in your details and our aviation experts will contact you shortly.</p>
+            
+            <form class="inquiry-form" id="inquiryForm2">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="form-group">
+                    <label for="passengers">Number of Passengers</label>
+                    <select id="passengers" required>
+                        <option value="" disabled selected>Select Passengers</option>
+                        <option value="1-2">1-2 Passengers</option>
+                        <option value="3-4">3-4 Passengers</option>
+                        <option value="5-6">5-6 Passengers</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary w-100">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Global Floating WhatsApp Button -->
+    <a href="https://wa.me/918001234567" class="floating-whatsapp" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
