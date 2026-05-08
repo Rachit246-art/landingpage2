@@ -9,52 +9,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .inner-hero {
-            height: 50vh;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.8)), url('assets/hero.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        .inner-hero h1 { font-size: 4rem; color: #fff; margin-bottom: 1rem; }
-        .breadcrumb { color: #d35400; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
-        .breadcrumb a { color: #cbd5e1; text-decoration: none; }
-        .breadcrumb a:hover { color: #fff; }
-    </style>
 </head>
 <body>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">RV GLOBAL<span>.</span></a>
+            <a href="index.html#home" class="logo">RV GLOBAL<span>.</span></a>
             <div class="nav-links">
-                <a href="index.html">HOME</a>
-                <a href="about.html" style="color: var(--primary);">ABOUT US</a>
-                <div class="dropdown">
-                    <a href="services.html">OUR SERVICES <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="services.html#charter">Charter Flights</a>
-                        <a href="services.html#chardham">Char Dham Yatra</a>
-                        <a href="services.html#vip">VIP Darshan</a>
-                    </div>
-                </div>
-                <a href="contact.html">CONTACT US</a>
+                <a href="index.html#home">HOME</a>
+                <a href="index.html#destinations">DESTINATIONS</a>
+                <a href="index.html#inclusions">INCLUSIONS</a>
+                <a href="index.html#why-us">WHY CHOOSE US</a>
+                <a href="index.html#faq">FAQ</a>
             </div>
-            <button class="btn-primary open-popup" data-popup="inquiryPopup">Book Charter</button>
+            <button class="btn-primary open-popup" data-popup="inquiryPopup">Reserve Your Slot</button>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
     <!-- Inner Hero -->
-    <section class="inner-hero">
+    <section class="inner-hero" style="background-image: url('assets/hero.png');">
         <div class="hero-content fade-up">
             <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; About Us</div>
             <h1>Our Story</h1>
@@ -112,16 +87,16 @@
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
-                    <a href="index.html">HOME</a>
-                    <a href="about.html">ABOUT US</a>
-                    <a href="services.html">OUR SERVICES</a>
-                    <a href="contact.html">CONTACT US</a>
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#destinations">Destinations</a>
+                    <a href="index.html#inclusions">Inclusions</a>
+                    <a href="index.html#faq">FAQ</a>
                 </div>
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-phone"></i> +91 800-123-4567</p>
-                    <p><i class="fas fa-envelope"></i> charters@rvglobal.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+                    <p><i class="fas fa-envelope"></i> bangalore@rvglobal.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Indiranagar, Bangalore, India</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -137,29 +112,16 @@
             <h3 class="popup-title">Book Your Charter</h3>
             <p class="popup-subtitle">Fill in your details and our aviation experts will contact you shortly.</p>
             
-            <form class="inquiry-form" id="inquiryForm">
+            <form id="popupInquiryForm" class="inquiry-form">
                 <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" placeholder="John Doe" required>
+                    <label for="p-name">Name</label>
+                    <input type="text" id="p-name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="john@example.com" required>
+                    <label for="p-phone">Phone Number</label>
+                    <input type="tel" id="p-phone" required>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" placeholder="+91 98765 43210" required>
-                </div>
-                <div class="form-group">
-                    <label for="passengers">Number of Passengers</label>
-                    <select id="passengers" required>
-                        <option value="" disabled selected>Select Passengers</option>
-                        <option value="1-2">1-2 Passengers</option>
-                        <option value="3-4">3-4 Passengers</option>
-                        <option value="5-6">5-6 Passengers</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-primary w-100">Submit Inquiry</button>
+                <button type="submit" class="btn-primary w-100">Reserve Your Slot</button>
             </form>
         </div>
     </div>

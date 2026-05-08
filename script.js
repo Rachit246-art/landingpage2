@@ -69,76 +69,108 @@ popups.forEach(popup => {
     });
 });
 
-// Image Gallery Popup functionality
-const imagePopup = document.getElementById('imagePopup');
-const popupImage = document.getElementById('popupImage');
-const imageTriggers = document.querySelectorAll('.open-image-popup img');
-
-imageTriggers.forEach(img => {
-    img.parentElement.addEventListener('click', () => {
-        popupImage.src = img.src;
-        imagePopup.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-});
-
-// Exit Intent Popup (triggers once when mouse leaves top of viewport)
-let exitPopupShown = false;
-document.addEventListener('mouseleave', (e) => {
-    if (e.clientY < 0 && !exitPopupShown) {
-        const exitPopup = document.getElementById('exitPopup');
-        if(exitPopup) {
-            exitPopup.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            exitPopupShown = true;
-        }
-    }
-});
-
-// Form submission mock
-const form = document.getElementById('inquiryForm');
-if(form) {
-    form.addEventListener('submit', (e) => {
+// Smooth Scroll for Navigation Links
+document.querySelectorAll('a[href^="#"], .scroll-to').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const btn = form.querySelector('button');
-        const originalText = btn.innerText;
+        const targetId = this.getAttribute('href') || this.getAttribute('data-target');
+        const targetElement = document.querySelector(targetId);
         
-        btn.innerText = 'Processing...';
-        btn.style.opacity = '0.7';
-        btn.disabled = true;
-        
-        // Simulate API call
-        setTimeout(() => {
-            btn.innerText = 'Request Sent Successfully!';
-            btn.style.backgroundColor = '#27ae60';
-            btn.style.color = 'white';
-            btn.style.opacity = '1';
+        if (targetElement) {
+            const navHeight = document.querySelector('.navbar').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
             
-            setTimeout(() => {
-                document.getElementById('inquiryPopup').classList.remove('active');
-                document.body.style.overflow = 'auto';
-                form.reset();
-                
-                // Reset button
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.backgroundColor = '';
-                    btn.style.color = '';
-                    btn.disabled = false;
-                }, 500);
-            }, 2000);
-        }, 1500);
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
     });
+});
+
+// FAQ Accordion
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+        // Close other items
+        faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+            }
+        });
+        // Toggle current item
+        item.classList.toggle('active');
+    });
+});
+
+// Form submission logic (Mock)
+const handleFormSubmit = (formId, successMsg) => {
+    const form = document.getElementById(formId);
+    if(form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            const originalText = btn.innerText;
+            
+            btn.innerText = 'Processing...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                btn.innerText = successMsg || 'Submitted Successfully!';
+                btn.style.backgroundColor = '#27ae60';
+                btn.style.color = 'white';
+                btn.style.opacity = '1';
+                
+                setTimeout(() => {
+                    // If it's a popup, close it
+                    const parentPopup = form.closest('.popup-overlay');
+                    if (parentPopup) {
+                        parentPopup.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                    
+                    form.reset();
+                    
+                    // Reset button
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.backgroundColor = '';
+                        btn.style.color = '';
+                        btn.disabled = false;
+                    }, 500);
+                }, 2000);
+            }, 1500);
+        });
+    }
+};
+
+handleFormSubmit('heroLeadForm', 'Slot Reserved Successfully!');
+handleFormSubmit('popupInquiryForm', 'Slot Reserved Successfully!');
+handleFormSubmit('itineraryDownloadForm', 'PDF Download Started!');
+
+// Hero Background Slider
+const slides = document.querySelectorAll('.hero-slide');
+let currentSlide = 0;
+
+function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
 }
 
-// Show image popup instantly when the website is opened
-window.addEventListener('load', () => {
-    const mainPopup = document.getElementById('exitPopup');
-    if (mainPopup) {
-        // Optional slight delay to ensure page renders first, set to 0 for instant
-        setTimeout(() => {
-            mainPopup.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }, 100); 
-    }
-});
+if (slides.length > 1) {
+    setInterval(nextSlide, 5000); // Change image every 5 seconds
+}
+
+// Mobile Menu Toggle (Simplified)
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
