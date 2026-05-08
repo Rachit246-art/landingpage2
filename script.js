@@ -174,3 +174,29 @@ if (mobileMenuBtn && navLinks) {
         navLinks.classList.toggle('active');
     });
 }
+
+// Scroll Spy - highlight active nav link based on current section
+const sections = document.querySelectorAll('section[id]');
+const allNavLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+function updateActiveNavLink() {
+    const scrollPos = window.scrollY + 150; // offset for navbar height
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+            allNavLinks.forEach(link => {
+                link.classList.remove('current');
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.classList.add('current');
+                }
+            });
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveNavLink);
+window.addEventListener('load', updateActiveNavLink);
