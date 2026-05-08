@@ -250,3 +250,27 @@ if (testimonialSlider && prevTestimonial && nextTestimonial) {
     testimonialSlider.addEventListener('mouseleave', () => resetAutoSlide());
 }
 
+// Scroll Triggered Popup Logic
+const destinationsSection = document.getElementById('destinations');
+const scrollPopup = document.getElementById('scrollInquiryPopup');
+
+if (destinationsSection && scrollPopup) {
+    let popupShown = false;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Trigger when section is 20% visible
+            if (entry.isIntersecting && !popupShown) {
+                setTimeout(() => {
+                    scrollPopup.classList.add('active');
+                    popupShown = true;
+                    // Stop observing after showing once
+                    observer.unobserve(destinationsSection);
+                }, 500); // Slight delay for better UX
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(destinationsSection);
+}
+

@@ -870,6 +870,60 @@ button, .btn-primary, .btn-secondary {
     transform: translateY(0) scale(1);
 }
 
+.popup-content.popup-wide {
+    max-width: 900px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.popup-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.popup-image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 450px;
+}
+
+.popup-image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem;
+    background: linear-gradient(transparent, rgba(10, 25, 47, 0.9));
+    color: white;
+}
+
+.popup-image-overlay h4 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-family: var(--font-heading);
+}
+
+.popup-form-content {
+    flex: 1.2;
+    padding: 3rem;
+}
+
+@media (max-width: 768px) {
+    .popup-flex {
+        flex-direction: column;
+    }
+    
+    .popup-image {
+        min-height: 200px;
+    }
+    
+    .popup-form-content {
+        padding: 2rem;
+    }
+}
+
 .popup-content.modal-lg {
     max-width: 700px;
 }
