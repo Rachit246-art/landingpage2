@@ -200,3 +200,53 @@ function updateActiveNavLink() {
 
 window.addEventListener('scroll', updateActiveNavLink);
 window.addEventListener('load', updateActiveNavLink);
+
+// Testimonial Slider Logic
+const testimonialSlider = document.getElementById('testimonialSlider');
+const prevTestimonial = document.getElementById('prevTestimonial');
+const nextTestimonial = document.getElementById('nextTestimonial');
+
+if (testimonialSlider && prevTestimonial && nextTestimonial) {
+    const scrollStep = 350; // Amount to scroll
+    
+    const scrollSlider = (direction) => {
+        const maxScroll = testimonialSlider.scrollWidth - testimonialSlider.clientWidth;
+        const currentScroll = testimonialSlider.scrollLeft;
+        
+        if (direction === 'next') {
+            if (currentScroll >= maxScroll - 10) {
+                testimonialSlider.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                testimonialSlider.scrollBy({ left: scrollStep, behavior: 'smooth' });
+            }
+        } else {
+            if (currentScroll <= 10) {
+                testimonialSlider.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            } else {
+                testimonialSlider.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+            }
+        }
+    };
+
+    nextTestimonial.addEventListener('click', () => {
+        scrollSlider('next');
+        resetAutoSlide();
+    });
+
+    prevTestimonial.addEventListener('click', () => {
+        scrollSlider('prev');
+        resetAutoSlide();
+    });
+
+    let autoSlideTimer = setInterval(() => scrollSlider('next'), 5000);
+
+    const resetAutoSlide = () => {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = setInterval(() => scrollSlider('next'), 5000);
+    };
+
+    // Pause on hover
+    testimonialSlider.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+    testimonialSlider.addEventListener('mouseleave', () => resetAutoSlide());
+}
+
