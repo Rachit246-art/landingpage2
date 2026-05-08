@@ -1345,12 +1345,6 @@ button, .btn-primary, .btn-secondary {
         transition: var(--transition);
     }
     
-    .nav-links a:hover {
-        background: var(--primary-light);
-        border-color: var(--primary);
-        color: var(--primary) !important;
-    }
-    
     .nav-links a.current {
         background: var(--primary-light);
         border-color: var(--primary);
