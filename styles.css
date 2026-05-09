@@ -873,7 +873,8 @@ button, .btn-primary, .btn-secondary {
 .popup-content.popup-wide {
     max-width: 900px;
     padding: 0;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .popup-flex {
